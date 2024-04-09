@@ -10,6 +10,8 @@ public class Recursion {
         System.out.println("3. Check if a number is prime");
         System.out.println("4. Factorial of a number");
         System.out.println("5. Nth Fibonacci number");
+        System.out.println("6. Power of a number");
+        System.out.println("7. Reverse an array");
 
 
         System.out.print("Enter the number of the problem to solve: ");
@@ -59,6 +61,31 @@ public class Recursion {
                 int n = scanner.nextInt();
                 int fibonacciNumber = fibonacci(n);
                 System.out.println("The " + n + "th Fibonacci number is: " + fibonacciNumber);
+                break;
+            case 6:
+                // Problem 6: Power of a number
+                System.out.print("Enter the base number: ");
+                int base = scanner.nextInt();
+                System.out.print("Enter the exponent: ");
+                int exponent = scanner.nextInt();
+                int result = power(base, exponent);
+                System.out.println(base + " raised to the power of " + exponent + " is: " + result);
+                break;
+            case 7:
+                // Problem 7: Reverse an array
+                System.out.print("Enter the size of the array: ");
+                int size7 = scanner.nextInt();
+                int[] array7 = new int[size7];
+                System.out.println("Enter the elements of the array:");
+                for (int i = 0; i < size7; i++) {
+                    array7[i] = scanner.nextInt();
+                }
+                reverseArray(array7, 0, size7 - 1);
+                System.out.println("Reversed array:");
+                for (int num : array7) {
+                    System.out.print(num + " ");
+                }
+                System.out.println();
                 break;
             default:
                 System.out.println("Invalid problem number! Please try again.");
@@ -167,6 +194,45 @@ public class Recursion {
             return n;
         return fibonacci(n - 1) + fibonacci(n - 2);
     }
+
+    // Problem 6: Finding the power of a number
+    /**
+     * This method calculates the power of a number recursively.
+     * Time complexity: O(log n), where n is the exponent.
+     * The function recursively divides the exponent by 2 in each step.
+     *
+     * @param a The base number.
+     * @param n The exponent.
+     * @return  The result of a raised to the power of n.
+     */
+    public static int power(int a, int n) {
+        if (n == 0)
+            return 1;
+        if (n % 2 == 0)
+            return power(a, n / 2) * power(a, n / 2);
+        else
+            return a * power(a, n / 2) * power(a, n / 2);
+    }
+
+    // Problem 7: Reversing an array
+    /**
+     * This method reverses an array recursively.
+     * Time complexity: O(n), where n is the size of the array.
+     * The function recursively swaps elements until the entire array is reversed.
+     *
+     * @param array The array of integers to be reversed.
+     * @param start The starting index of the array.
+     * @param end   The ending index of the array.
+     */
+    public static void reverseArray(int[] array, int start, int end) {
+        if (start >= end)
+            return;
+        int temp = array[start];
+        array[start] = array[end];
+        array[end] = temp;
+        reverseArray(array, start + 1, end - 1);
+    }
+
 
 
 }
