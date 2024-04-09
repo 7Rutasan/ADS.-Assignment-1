@@ -13,6 +13,7 @@ public class Recursion {
         System.out.println("6. Power of a number");
         System.out.println("7. Reverse an array");
         System.out.println("8. Check if a string consists of digits only");
+        System.out.println("9. Binomial coefficient")
 
 
         System.out.print("Enter the number of the problem to solve: ");
@@ -98,6 +99,15 @@ public class Recursion {
                 } else {
                     System.out.println("The string does not consist of digits only.");
                 }
+                break;
+            case 9:
+                // Problem 9: Binomial coefficient
+                System.out.print("Enter the value of n: ");
+                int n9 = scanner.nextInt();
+                System.out.print("Enter the value of k: ");
+                int k9 = scanner.nextInt();
+                int coefficient = binomialCoefficient(n9, k9);
+                System.out.println("Binomial coefficient C(" + n9 + ", " + k9 + ") is: " + coefficient);
                 break;
             default:
                 System.out.println("Invalid problem number! Please try again.");
@@ -262,6 +272,22 @@ public class Recursion {
         if (s.length() == 1)
             return true;
         return isAllDigits(s.substring(1));
+    }
+
+    // Problem 9: Finding the binomial coefficient
+    /**
+     * This method calculates the binomial coefficient recursively.
+     * Time complexity: O(n * k), where n and k are the input numbers.
+     * The function recursively calculates each coefficient based on the previous coefficients.
+     *
+     * @param n The total number of items.
+     * @param k The number of items to choose.
+     * @return  The binomial coefficient C(n, k).
+     */
+    public static int binomialCoefficient(int n, int k) {
+        if (k == 0 || k == n)
+            return 1;
+        return binomialCoefficient(n - 1, k - 1) + binomialCoefficient(n - 1, k);
     }
 
 }
