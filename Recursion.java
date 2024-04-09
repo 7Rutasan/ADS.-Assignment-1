@@ -8,6 +8,7 @@ public class Recursion {
         System.out.println("1. Minimum element in array");
         System.out.println("2. Average of elements in array");
         System.out.println("3. Check if a number is prime");
+        System.out.println("4. Factorial of a number");
 
 
         System.out.print("Enter the number of the problem to solve: ");
@@ -43,6 +44,13 @@ public class Recursion {
                 int number3 = scanner.nextInt();
                 String result3 = isPrime(number3);
                 System.out.println("The number is: " + result3);
+                break;
+            case 4:
+                // Problem 4: Factorial of a number
+                System.out.print("Enter a number to find its factorial: ");
+                int number4 = scanner.nextInt();
+                int factorial = factorial(number4);
+                System.out.println("Factorial of " + number4 + " is: " + factorial);
                 break;
             default:
                 System.out.println("Invalid problem number! Please try again.");
@@ -122,5 +130,19 @@ public class Recursion {
         return isPrimeRecursive(n, i + 1);
     }
 
+    // Problem 4: Finding the factorial of a number
+    /**
+     * This method calculates the factorial of a given number recursively.
+     * Time complexity: O(n), where n is the input number.
+     * The function recursively multiplies numbers from 1 to n.
+     *
+     * @param n The number for which the factorial is to be calculated.
+     * @return  The factorial of the given number.
+     */
+    public static int factorial(int n) {
+        if (n == 0)
+            return 1;
+        return n * factorial(n - 1);
+    }
 
 }
