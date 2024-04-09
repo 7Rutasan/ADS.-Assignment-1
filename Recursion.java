@@ -13,7 +13,8 @@ public class Recursion {
         System.out.println("6. Power of a number");
         System.out.println("7. Reverse an array");
         System.out.println("8. Check if a string consists of digits only");
-        System.out.println("9. Binomial coefficient")
+        System.out.println("9. Binomial coefficient");
+        System.out.println("10. Greatest Common Divisor (GCD)");
 
 
         System.out.print("Enter the number of the problem to solve: ");
@@ -108,6 +109,15 @@ public class Recursion {
                 int k9 = scanner.nextInt();
                 int coefficient = binomialCoefficient(n9, k9);
                 System.out.println("Binomial coefficient C(" + n9 + ", " + k9 + ") is: " + coefficient);
+                break;
+            case 10:
+                // Problem 10: Greatest Common Divisor (GCD)
+                System.out.print("Enter the first number: ");
+                int a10 = scanner.nextInt();
+                System.out.print("Enter the second number: ");
+                int b10 = scanner.nextInt();
+                int gcd = gcd(a10, b10);
+                System.out.println("Greatest Common Divisor (GCD) of " + a10 + " and " + b10 + " is: " + gcd);
                 break;
             default:
                 System.out.println("Invalid problem number! Please try again.");
@@ -289,5 +299,23 @@ public class Recursion {
             return 1;
         return binomialCoefficient(n - 1, k - 1) + binomialCoefficient(n - 1, k);
     }
+
+    // Problem 10: Greatest Common Divisor (GCD) using Euclidean Algorithm
+    /**
+     * This method calculates the greatest common divisor (GCD) of two numbers
+     * using the Euclidean Algorithm recursively.
+     * Time complexity: O(log min(a, b)), where a and b are the input numbers.
+     * The Euclidean Algorithm reduces the problem size by at least half in each step.
+     *
+     * @param a The first number.
+     * @param b The second number.
+     * @return  The greatest common divisor of the two numbers.
+     */
+    public static int gcd(int a, int b) {
+        if (b == 0)
+            return a;
+        return gcd(b, a % b);
+    }
+
 
 }
