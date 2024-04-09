@@ -9,6 +9,7 @@ public class Recursion {
         System.out.println("2. Average of elements in array");
         System.out.println("3. Check if a number is prime");
         System.out.println("4. Factorial of a number");
+        System.out.println("5. Nth Fibonacci number");
 
 
         System.out.print("Enter the number of the problem to solve: ");
@@ -51,6 +52,13 @@ public class Recursion {
                 int number4 = scanner.nextInt();
                 int factorial = factorial(number4);
                 System.out.println("Factorial of " + number4 + " is: " + factorial);
+                break;
+            case 5:
+                // Problem 5: Nth Fibonacci number
+                System.out.print("Enter the value of n to find the nth Fibonacci number: ");
+                int n = scanner.nextInt();
+                int fibonacciNumber = fibonacci(n);
+                System.out.println("The " + n + "th Fibonacci number is: " + fibonacciNumber);
                 break;
             default:
                 System.out.println("Invalid problem number! Please try again.");
@@ -144,5 +152,21 @@ public class Recursion {
             return 1;
         return n * factorial(n - 1);
     }
+
+    // Problem 5: Finding the nth Fibonacci number
+    /**
+     * This method calculates the nth Fibonacci number recursively.
+     * Time complexity: O(2^n), where n is the input number.
+     * The function makes two recursive calls for each recursive call until it reaches the base case.
+     *
+     * @param n The index of the Fibonacci number to be calculated.
+     * @return  The nth Fibonacci number.
+     */
+    public static int fibonacci(int n) {
+        if (n <= 1)
+            return n;
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
 
 }
