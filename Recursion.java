@@ -8,6 +8,7 @@ public class Recursion {
         System.out.println("1. Minimum element in array");
         System.out.println("2. Average of elements in array");
 
+
         System.out.print("Enter the number of the problem to solve: ");
         int problemNumber = scanner.nextInt();
 
@@ -79,4 +80,6 @@ public class Recursion {
             return array[0];
         return array[n - 1] + findSum(array, n - 1);
     }
+
+
 }
