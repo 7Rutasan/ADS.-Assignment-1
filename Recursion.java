@@ -12,6 +12,7 @@ public class Recursion {
         System.out.println("5. Nth Fibonacci number");
         System.out.println("6. Power of a number");
         System.out.println("7. Reverse an array");
+        System.out.println("8. Check if a string consists of digits only");
 
 
         System.out.print("Enter the number of the problem to solve: ");
@@ -86,6 +87,17 @@ public class Recursion {
                     System.out.print(num + " ");
                 }
                 System.out.println();
+                break;
+            case 8:
+                // Problem 8: Check if a string consists of digits only
+                System.out.print("Enter a string to check if it consists of digits only: ");
+                String input8 = scanner.next();
+                boolean result8 = isAllDigits(input8);
+                if (result8) {
+                    System.out.println("The string consists of digits only.");
+                } else {
+                    System.out.println("The string does not consist of digits only.");
+                }
                 break;
             default:
                 System.out.println("Invalid problem number! Please try again.");
@@ -233,6 +245,23 @@ public class Recursion {
         reverseArray(array, start + 1, end - 1);
     }
 
-
+    // Problem 8: Checking if a string consists of digits only
+    /**
+     * This method checks whether a given string consists of digits only recursively.
+     * Time complexity: O(n), where n is the length of the string.
+     * The function recursively checks each character of the string.
+     *
+     * @param s The string to be checked.
+     * @return  True if the string consists of digits only, false otherwise.
+     */
+    public static boolean isAllDigits(String s) {
+        if (s.isEmpty())
+            return false;
+        if (!Character.isDigit(s.charAt(0)))
+            return false;
+        if (s.length() == 1)
+            return true;
+        return isAllDigits(s.substring(1));
+    }
 
 }
