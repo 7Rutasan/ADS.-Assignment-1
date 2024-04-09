@@ -7,6 +7,7 @@ public class Recursion {
         System.out.println("Choose the problem to solve:");
         System.out.println("1. Minimum element in array");
         System.out.println("2. Average of elements in array");
+        System.out.println("3. Check if a number is prime");
 
 
         System.out.print("Enter the number of the problem to solve: ");
@@ -35,6 +36,16 @@ public class Recursion {
                 }
                 double average = findAverage(array2, size2);
                 System.out.println("Average of elements in the array: " + average);
+                break;
+            case 3:
+                // Problem 3: Check if a number is prime
+                System.out.print("Enter a number to check if it's prime: ");
+                int number3 = scanner.nextInt();
+                String result3 = isPrime(number3);
+                System.out.println("The number is: " + result3);
+                break;
+            default:
+                System.out.println("Invalid problem number! Please try again.");
                 break;
         }
     }
@@ -79,6 +90,36 @@ public class Recursion {
         if (n == 1)
             return array[0];
         return array[n - 1] + findSum(array, n - 1);
+    }
+
+    // Problem 3: Checking if a number is prime
+    /**
+     * This method checks whether a given number is prime recursively.
+     * Time complexity: O(sqrt(n)), where n is the given number.
+     * The function recursively checks divisibility up to the square root of the number.
+     *
+     * @param n The number to be checked for primality.
+     * @return  "Prime" if the number is prime, "Composite" otherwise.
+     */
+    public static String isPrime(int n) {
+        return isPrimeRecursive(n, 2) ? "Prime" : "Composite";
+    }
+
+    /**
+     * This method checks whether a given number is prime recursively.
+     *
+     * @param n     The number to be checked for primality.
+     * @param i     The current divisor being checked.
+     * @return      True if the number is prime, false otherwise.
+     */
+    public static boolean isPrimeRecursive(int n, int i) {
+        if (n <= 2)
+            return (n == 2);
+        if (n % i == 0)
+            return false;
+        if (i * i > n)
+            return true;
+        return isPrimeRecursive(n, i + 1);
     }
 
 
